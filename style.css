@@ -1,0 +1,304 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ 
+:root {
+  --pink-1: #f4607a;
+  --pink-2: #f88fa0;
+  --pink-3: #fbc5ce;
+  --dark:   #1a1a1a;
+  --text:   #2c2c2c;
+  --muted:  #444;
+  --white:  #ffffff;
+}
+ 
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Fundo rosa degradê igual à imagem */
+  background: linear-gradient(135deg, #f4607a 0%, #f7869a 35%, #f9a8b8 65%, #fbccd5 100%);
+  padding: 30px 20px;
+  position: relative;
+  overflow: hidden;
+}
+ 
+/* ================================================
+   BLOBS DE FUNDO (efeito borrado rosado)
+   ================================================ */
+.bg-blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: 0;
+}
+ 
+.bg-blob--1 {
+  width: 500px;
+  height: 500px;
+  background: #f04060;
+  top: -120px;
+  left: -100px;
+  animation: float1 10s ease-in-out infinite;
+}
+ 
+.bg-blob--2 {
+  width: 420px;
+  height: 420px;
+  background: #f97090;
+  bottom: -100px;
+  right: -80px;
+  animation: float2 12s ease-in-out infinite;
+}
+ 
+.bg-blob--3 {
+  width: 300px;
+  height: 300px;
+  background: #fbb0c0;
+  top: 40%;
+  left: 30%;
+  animation: float1 14s ease-in-out infinite reverse;
+}
+ 
+@keyframes float1 {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-30px) scale(1.05); }
+}
+@keyframes float2 {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(25px) scale(1.04); }
+}
+ 
+/* ================================================
+   GLASS CARD
+   ================================================ */
+.glass-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1100px;
+  min-height: 600px;
+  border-radius: 20px;
+  padding: 0 48px 48px;
+ 
+  /* Glassmorphism */
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    0 8px 32px rgba(200, 60, 90, 0.18),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+ 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+ 
+/* ================================================
+   NAVBAR
+   ================================================ */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 0 28px;
+  gap: 20px;
+}
+ 
+/* Logo */
+.logo {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: 1px;
+  flex-shrink: 0;
+}
+ 
+.logo span {
+  color: var(--dark);
+  font-weight: 800;
+}
+ 
+/* Nav links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+}
+ 
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.93rem;
+  font-weight: 500;
+  color: var(--dark);
+  transition: opacity 0.2s;
+}
+ 
+.nav-links a:hover {
+  opacity: 0.6;
+}
+ 
+/* Botões de autenticação */
+.nav-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+ 
+.btn-auth {
+  text-decoration: none;
+  padding: 9px 24px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.15s;
+}
+ 
+/* Login — contorno escuro */
+.btn-login {
+  background: transparent;
+  border: 1.8px solid var(--dark);
+  color: var(--dark);
+}
+ 
+.btn-login:hover {
+  background: rgba(0,0,0,0.08);
+}
+ 
+/* Register — preenchido escuro */
+.btn-register {
+  background: rgba(0,0,0,0.12);
+  border: 1.8px solid var(--dark);
+  color: var(--dark);
+}
+ 
+.btn-register:hover {
+  background: rgba(0,0,0,0.2);
+  transform: translateY(-1px);
+}
+ 
+/* ================================================
+   HERO
+   ================================================ */
+.hero {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 40px;
+}
+ 
+.hero-text {
+  max-width: 560px;
+}
+ 
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.25;
+  margin-bottom: 22px;
+  letter-spacing: -0.5px;
+}
+ 
+.hero-desc {
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 480px;
+}
+ 
+/* ================================================
+   PLAY VIDEO BAR
+   ================================================ */
+.play-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  margin-top: 40px;
+}
+ 
+.play-line {
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--dark);
+  border-radius: 2px;
+}
+ 
+.play-label {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--dark);
+  white-space: nowrap;
+}
+ 
+.play-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  border: 1.8px solid var(--dark);
+  background: transparent;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  flex-shrink: 0;
+}
+ 
+.play-btn:hover {
+  background: rgba(0,0,0,0.1);
+  transform: scale(1.05);
+}
+ 
+/* ================================================
+   RESPONSIVO
+   ================================================ */
+@media (max-width: 860px) {
+  .glass-card {
+    padding: 0 28px 36px;
+  }
+ 
+  .nav-links {
+    gap: 18px;
+  }
+ 
+  .hero-title {
+    font-size: 1.9rem;
+  }
+}
+ 
+@media (max-width: 640px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 24px 0 20px;
+    gap: 16px;
+  }
+ 
+  .nav-links {
+    order: 3;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+ 
+  .hero-title {
+    font-size: 1.6rem;
+  }
+ 
+  .glass-card {
+    padding: 0 20px 28px;
+    min-height: auto;
+  }
+}
+ 
